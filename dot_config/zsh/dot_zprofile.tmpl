@@ -1,5 +1,9 @@
 # Export environmental variables
+{{ if eq .chezmoi.os "darwin" }}
 export PATH=$HOME/Library/Python/3.8/bin:$HOME/.local/bin:/opt/homebrew/sbin:/opt/homebrew/bin:/opt/local/bin:$PATH
+{{ else }}
+export PATH=$HOME/.local/bin:$PATH
+{{ end }}
 export LC_ALL=es_ES.UTF-8
 export LANG=es_ES.UTF-8
 export ZDOTDIR=$HOME/.config/zsh/
