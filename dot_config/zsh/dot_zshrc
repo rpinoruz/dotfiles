@@ -1,0 +1,35 @@
+if type brew &>/dev/null; then
+    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+    autoload -Uz compinit
+    compinit
+fi
+
+
+# Load starship prompt
+eval "$(starship init zsh)"
+
+# History settings
+setopt histignorealldups sharehistory
+setopt HIST_IGNORE_SPACE
+[ -d ~/.cache/zsh ] || mkdir -p ~/.cache/zsh
+HISTFILE=~/.cache/zsh/history
+HISTSIZE=10000
+SAVEHIST=10000
+
+# Load aliases and shortcuts if existent.
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc"
+
+# Enabling vi mode
+bindkey -v
+setopt autocd	# Automatically cd into typed directory.
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
+source /opt/homebrew/share/zsh-you-should-use/you-should-use.plugin.zsh
+source /opt/homebrew/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+source /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh	
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
