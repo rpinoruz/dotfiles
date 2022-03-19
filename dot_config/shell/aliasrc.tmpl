@@ -1,5 +1,9 @@
 # vim: filetype=sh
+{{ if eq .chezmoi.os "linux" }}
+alias ls='ls --color=auto'
+{{ else }}
 alias ls='ls -G' \
+{{ end }}
 la='ls -A' \
 l='ls -CF' \
 ll='ls -lhF' \
