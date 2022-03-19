@@ -1,29 +1,29 @@
 # vim: filetype=sh
 {{ if eq .chezmoi.os "linux" }}
-alias ls='ls --color=auto' \
+alias ls='ls --color=auto'
 {{ else }}
-alias ls='ls -G' \
+alias ls='ls -G'
 {{ end }}
-la='ls -A' \
-l='ls -CF' \
-ll='ls -lhF' \
-grep='grep --color=auto' \
-egrep='egrep --color=auto' \
-fgrep='fgrep --color=auto' \
-cp='cp -v' \
-mv='mv -v' \
-rm='rm -v' \
-mkdir='mkdir -pv' \
-e='$EDITOR' \
-se='sudo $EDITOR' \
-py='python3' \
-bc='bc -l' \
-g='git' \
-ga='git add' \
-gp='git push' \
-gc='git commit' \
-gcl='git clone' \
-ydl='youtube-dl --add-metadata -i' \
-dotfiles='git --git-dir=$HOME/build/dotfiles/ --work-tree=$HOME'  \
-dfg='dotfiles' \
-dfe='GIT_DIR=$HOME/build/dotfiles GIT_WORK_TREE=$HOME e' 
+alias la='ls -A'
+alias l='ls -CF'
+alias ll='ls -lhF'
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias cp='cp -v'
+alias mv='mv -v'
+alias rm='rm -v'
+alias mkdir='mkdir -pv'
+alias e='$EDITOR'
+alias se='sudo $EDITOR'
+alias py='python3'
+alias bc='bc -l'
+alias g='git'
+alias ga='git add'
+alias gp='git push'
+alias gc='git commit'
+alias gcl='git clone'
+alias ydl='youtube-dl --add-metadata -i'
+alias dotfiles='git --git-dir=$HOME/build/dotfiles/ --work-tree=$HOME' 
+alias dfg='dotfiles'
+alias dfe='GIT_DIR=$HOME/build/dotfiles GIT_WORK_TREE=$HOME e'
