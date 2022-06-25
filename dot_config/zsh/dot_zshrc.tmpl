@@ -31,16 +31,23 @@ setopt autocd	# Automatically cd into typed directory.
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
-{{ if eq .chezmoi.os "darwin" }}
-source /opt/homebrew/share/zsh-you-should-use/you-should-use.plugin.zsh
-source /opt/homebrew/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-source /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh	
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-{{ else }}
-source /usr/share/zsh-you-should-use/you-should-use.plugin.zsh
-source /usr/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-source /usr/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-{{ end }}
+# zplug config
+source $ZPLUG_HOME/init.zsh
+
+zplug "zplug/zplug", hook-build:"zplug --self-manage"
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-history-substring-search"
+zplug "jeffreytse/zsh-vi-mode"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+# Then, source plugins and add commands to $PATH
+zplug load --verbose
