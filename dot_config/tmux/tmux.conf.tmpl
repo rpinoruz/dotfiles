@@ -3,7 +3,7 @@ set-option -sg escape-time 10
 # In osx you neeed to install tmux-256color as a terminfo entry
 # See https://gist.github.com/bbqtd/a4ac060d6f6b9ea6fe3aabe735aa9d95
 {{ if eq .chezmoi.os "linux" }}
-set -g default-terminal "alacritty"
+set -g default-terminal "xterm-256color"
 {{ end }}
 set-option -sa terminal-overrides ',xterm-256color:RGB'
 set -g mode-keys vi
@@ -20,18 +20,5 @@ bind -r C-k resize-pane -U 5
 bind -r C-j resize-pane -D 5
 bind -r C-h resize-pane -L 5
 bind -r C-l resize-pane -R 5
-
-# status bar
-set -g status-position bottom
-set -g status-bg colour239
-set -g status-fg colour137
-set -g status-left ''
-set -g status-right '#[fg=colour233,bg=colour241,bold] %d/%m #[fg=colour233,bg=colour245,bold] %H:%M:%S '
-set -g status-right-length 50
-set -g status-left-length 20
-
-# window config
-setw -g window-status-current-format ' #I#[fg=colour250]:#[fg=colour255]#W#[fg=colour50]#F '
-setw -g window-status-format ' #I#[fg=colour237]:#[fg=colour250]#W#[fg=colour244]#F '
 
 set-option -g history-limit 5000
