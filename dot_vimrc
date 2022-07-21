@@ -19,9 +19,14 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-repeat'
+
+" Make html usable
+Plug 'mattn/emmet-vim'
 call plug#end()
 
 let g:gruvbox_italic=1
+let g:user_emmet_install_global=0
+autocmd Filetype html,css EmmetInstall
 " }}}
 " OPTIONS {{{1
 filetype plugin on
