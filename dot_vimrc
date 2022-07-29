@@ -11,7 +11,7 @@ call plug#begin('~/.vim/bundle')
 Plug 'junegunn/vim-plug'
 
 " Colorscheme
-Plug 'morhetz/gruvbox'
+Plug 'arcticicestudio/nord-vim'
 
 " tpope my beloved
 Plug 'tpope/vim-fugitive'
@@ -24,15 +24,13 @@ Plug 'tpope/vim-repeat'
 Plug 'mattn/emmet-vim'
 call plug#end()
 
-let g:gruvbox_italic=1
-let g:user_emmet_install_global=0
 autocmd Filetype html,css EmmetInstall
 " }}}
 " OPTIONS {{{1
 filetype plugin on
 syntax enable
 set background=dark
-colorscheme gruvbox
+colorscheme nord
 
 if has('termguicolors')
 	set termguicolors
@@ -83,7 +81,7 @@ let mapleader=','
 set pastetoggle=<F10>
 
 " Fast search & replace
-nnoremap <leader>s :%s//g
+nnoremap <leader>s :%s//g<left><left>
 
 " Make Y work like it should
 nnoremap Y y$

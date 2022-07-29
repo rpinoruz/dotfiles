@@ -1,3 +1,6 @@
+{{ if eq .chezmoi.os "linux" }}
+gpu-context=wayland
+{{ end }}
 sub-visibility=yes
 sub-auto=all
 sub-file-paths=ass:srt:Subs
