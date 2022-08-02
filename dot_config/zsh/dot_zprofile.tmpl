@@ -1,7 +1,4 @@
 # Export environmental variables
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
 {{ if eq .chezmoi.os "darwin" }}
 eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH=$HOME/.local/bin:/opt/homebrew/opt/openjdk/bin:$HOME/Library/Python/3.9/bin:$PATH
@@ -10,5 +7,8 @@ export LANG=es_ES.UTF-8
 {{ else }}
 export PATH=$HOME/.local/bin:$PATH
 {{ end }}
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 export ZDOTDIR=$HOME/.config/zsh/
 export EDITOR='vim'
