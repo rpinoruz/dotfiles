@@ -1,0 +1,5 @@
+set editing-mode vi
+set keymap vi-command
+# Vim style history search
+"k": history-search-backward
+"j": history-search-backward
